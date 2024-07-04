@@ -21,9 +21,9 @@ public class UserController {
     }
     @GetMapping("/")
     public String home(){
-        httpSession.setAttribute("user", new User());
+
         httpSession.setAttribute("logged", false);
-        return "redirect:/login";
+        return "redirect:/signin";
 
     }
 

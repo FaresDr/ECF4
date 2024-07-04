@@ -9,6 +9,9 @@
     <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
 </head>
 <body class="p-3 mb-2 bg-dark text-white">
+<nav>
+    <a th:href="@{/logout}"> <button class="btn btn-danger">Log Out</button> </a>
+</nav>
 <table class="table table-dark text-center">
     <thead>
     <th colspan="6">Liste des offres d'emploi</th>
@@ -23,7 +26,7 @@
         <th>Actions</th>
 
     </tr>
-    <tr th:each="job : ${joboffers}">
+    <tr th:if="${user!=null}" th:each="job : ${joboffers}">
         <th th:text="${job.id}"></th>
         <th th:text="${job.jobName}"></th>
         <th th:text="${job.jobDescription}"></th>
@@ -32,8 +35,7 @@
         <th>
             <a th:if="${user.role == 'admin'}" th:href="@{/joboffer/delete/{id}(id=${(job.getId())})}"><button class="btn btn-danger">Supprimer </button></a>
             <a th:if="${user.role == 'admin'}" th:href="@{/joboffer/update/{id}(id=${(job.getId())})}"><button class="btn btn-info">Update </button></a>
-            <a th:if="${user.role == 'candidat'}" th:href="@{/joboffer/postuler/{id}(id=${(job.getId())})}"><button class="btn btn-success">Postuler </button></a>
-            <a th:if="${user.role == 'admin'}" th:href="@{/joboffer/update/{id}(id=${(job.getId())})}"><button class="btn btn-warning">Details </button></a>
+            <a th:if="${user.role == 'candidat' }" th:href="@{/joboffer/postuler/{id}(id=${(job.getId())})}"><button class="btn btn-success">Postuler </button></a>
         </th>
     </tr>
 </table>
