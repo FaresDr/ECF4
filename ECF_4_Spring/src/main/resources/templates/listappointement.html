@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body class="p-3 mb-2 bg-dark text-white">
+<table class="table table-dark text-center">
+    <thead>
+    <th colspan="6">Liste des RDV</th>
+    </thead>
+
+    <tr>
+        <th>Id</th>
+        <th>Nom du chef</th>
+        <th>Nom du Client</th>
+        <th>Date</th>
+
+
+    </tr>
+    <tr th:each="rdv : ${appointements}" th:if="${user.id == rdv.user.getId()}">
+        <th th:if="${user.id == rdv.user.getId()}" th:text="${rdv.id}"></th>
+        <th th:if="${user.id == rdv.user.getId()}" th:text="${rdv.nameOfChief}"></th>
+        <th th:if="${user.id == rdv.user.getId()}" th:text="${rdv.nameOfClient}"></th>
+        <th th:if="${user.id == rdv.user.getId()}" th:text="${rdv.date}"></th>
+
+
+
+    </tr>
+</table>
+<a th:href="@{/joboffer}"><button class="btn btn-primary">Liste D'offre </button></a>
+
+
+</body>
+</html>
